@@ -9,6 +9,8 @@ import {
     ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
+import { errorHandler } from './errors'
+
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.setValidatorCompiler(validatorCompiler)
@@ -36,3 +38,4 @@ app.register(fastifyCors, {
     credentials: true,
 })
 
+app.setErrorHandler(errorHandler)
