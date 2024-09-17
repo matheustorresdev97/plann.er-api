@@ -10,6 +10,17 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './errors'
+import { confirmTripRoutes } from './routes/confirm-trip'
+import { confirmParticipantRoutes } from '@/service/confirm-participant'
+import { createInviteRoutes } from './routes/create-invite'
+import { createTripActivityRoutes } from './routes/create-trip-activity'
+import { createTripLinkRoutes } from './routes/create-trip-link'
+import { createTripRoutes } from './routes/create-trip'
+import { getTripActivitiesRoutes } from './routes/get-trip-activities'
+import { getTripDetailsRoutes } from './routes/get-trip-details'
+import { getTripLinksRoutes } from './routes/get-trip-links'
+import { getTripParticipantsRoutes } from './routes/get-trip-participants'
+import { updateTripRoutes } from './routes/update-trip'
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -39,3 +50,15 @@ app.register(fastifyCors, {
 })
 
 app.setErrorHandler(errorHandler)
+
+app.register(confirmTripRoutes)
+app.register(confirmParticipantRoutes)
+app.register(createInviteRoutes)
+app.register(createTripActivityRoutes)
+app.register(createTripLinkRoutes)
+app.register(createTripRoutes)
+app.register(getTripActivitiesRoutes)
+app.register(getTripDetailsRoutes)
+app.register(getTripLinksRoutes)
+app.register(getTripParticipantsRoutes)
+app.register(updateTripRoutes)
